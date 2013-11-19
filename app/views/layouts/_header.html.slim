@@ -1,0 +1,24 @@
+.header
+  ul.container
+    li.logo
+      = link_to root_path do
+        | thirdplace
+    - if user_signed_in?
+      li.home
+        = link_to user_path(current_user) do
+          i.fa.fa-home
+      li.conversations
+        = link_to root_path do
+          i.fa.fa-comments-o
+      li
+        = link_to edit_user_registration_path do
+          i.fa.fa-gear
+    - else
+      li.signup
+        = link_to new_user_registration_path do
+          i.fa.fa-asterisk
+          | Sign Up
+      li.login
+        = link_to new_user_session_path do
+          i.fa.fa-sign-in
+          | Login

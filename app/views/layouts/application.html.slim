@@ -1,0 +1,29 @@
+doctype html
+/ http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ]
+  |<html class="ie6" lang="en">
+/[if IE 7 ]
+  |<html class="ie7" lang="en">
+/[if IE 8 ]
+  |<html class="ie8" lang="en">
+/[if IE 9 ]
+  |<html class="ie9" lang="en">
+/[if (gt IE 9)|!(IE)]
+  |<html lang="en">
+head
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=7"
+  meta name="viewport" content="width=device-width, initial-scale=1"
+  meta name="description" content=""
+  title == content_for?(:title) ? yield(:title) : "thirdplace"
+  == stylesheet_link_tag "application", media: "all"
+  == javascript_include_tag "//use.typekit.com/ier1ulg.js"
+  == javascript_tag "try{Typekit.load()}catch(e){}"
+  == csrf_meta_tags
+body
+  = render 'layouts/header'
+  == yield
+  / == debug(params) if Rails.env.development?
+  == javascript_include_tag "application"
+  == yield :javascript
+|</html>

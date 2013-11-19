@@ -1,0 +1,2 @@
+class Degree < Community
+end

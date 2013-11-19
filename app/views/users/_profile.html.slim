@@ -1,0 +1,2 @@
+.user-communities
+  = user.communities.map { |community| "<div class='user-community'><i class='fa fa-caret-right'></i>" + community.name + "</div>"}.join(" ").html_safe

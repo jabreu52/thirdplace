@@ -1,0 +1,10 @@
+.container
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = f.error_notification
+    .form-holder
+      = f.input :name, label: false, placeholder: "Name", required: true, autofocus: true
+      = f.input :email, label: false, placeholder: "Email", required: true
+      = f.input :password, label: false, placeholder: "Password", required: true
+      .form-actions
+        = f.button :button, "Sign Up"
+        /= render "devise/shared/links"

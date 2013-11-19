@@ -1,0 +1,2 @@
+class Standing < Community
+end

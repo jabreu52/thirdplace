@@ -1,0 +1,286 @@
+@include border-box-sizing
+
+// CONTAINER
+.container
+  @include container($total-columns, $tablet)
+  // @include susy-grid-background
+  // @include at-breakpoint($tablet)
+  //   @include susy-grid-background
+  // @include at-breakpoint($desktop)
+  //   @include susy-grid-background
+
+// HEADER
+.header
+  $bg: #4F5468
+  background: $bg //#666
+  // border-bottom: 1px solid darken($bg, 10%)
+  ul
+    text-align: right
+    li
+      display: inline-block
+      a
+        color: rgba(255,255,255,0.5)
+        display: block
+        line-height: 40px
+    li.logo
+      float: left
+      a
+        // font-family: "p22-underground"
+        font-weight: 700
+    li.signup
+      a
+        font-size: 14px
+        font-weight: 700
+        padding-top: 1px
+        margin-right: 15px
+        i
+          margin-right: 5px
+    li.login
+      a
+        font-size: 14px
+        font-weight: 700
+        padding-top: 1px
+        i
+          margin-right: 7px
+    li.home, li.conversations
+      a
+        padding-right: 26px
+
+.title
+  background: #656B84
+  // @include linear-gradient(0,124,204,1,0,153,203,1)
+  // display: none
+  ul
+    li
+      color: white
+      padding: 12px 0 13px
+      @include ellipsis
+      i
+        margin-right: 8px
+      @include at-breakpoint($tablet)
+        @include font-size(19)
+
+// TABS
+.tabs
+  background: #F1F1F1
+  border-bottom: 1px solid #EAEAEA
+  margin-bottom: 13px
+  ul
+    padding-top: 11px
+    li
+      display: inline-block
+      a
+        background: #F8F8F8
+        border-right: 1px solid #E4E4E4
+        border-top: 1px solid #E4E4E4
+        display: block
+        line-height: 39px
+        padding: 0 26px
+        position: relative
+        top: 1px
+      &:first-child
+        a
+          border-left: 1px solid #E4E4E4
+          border-top-left-radius: 3px
+      &:last-child
+        a
+          border-top-right-radius: 3px
+    li.active
+      a
+        background: white
+        color: $black
+
+// USERS
+$user-width: 142px
+$user-width-tablet: 151px
+$user-width-desktop: 199px
+
+$user-card-offset-on-expand: $user-width * -0.85
+$user-main-margin-on-expand: $user-width * 0.15
+
+.users-main
+  @include at-breakpoint($tablet)
+    @include span-columns(8)
+
+.users
+
+.user
+  float: left
+  margin: 0 13px 13px 0
+  width: $user-width
+  &:nth-child(3n+3)
+    margin-right: 0
+  @include at-breakpoint($tablet)
+    width: $user-width-tablet
+
+.user-card
+  position: relative
+
+.user-image
+  img
+    border-radius: 2px
+    height: $user-width
+    width: $user-width
+    @include at-breakpoint($tablet)
+      height: $user-width-tablet
+      width: $user-width-tablet
+
+.user-name
+  background: white
+  border-top-right-radius: 2px
+  bottom: -1px
+  color: $black
+  @include font-size(14)
+  font-weight: 600
+  left: -1px
+  padding: 0 6px 0 1px
+  position: absolute
+
+.user-loading
+  display: none
+  color: white
+  line-height: 16px
+  position: absolute
+  top: 50%
+  left: 50%
+  margin: -7px 0 0 -8px
+
+.user-main
+  display: none
+
+.user.is-expanded
+  background: #edf6fb
+  width: 100%
+
+  .user-card
+    float: left
+    margin-left: $user-card-offset-on-expand
+    margin-right: 15px
+    @include at-breakpoint($tablet)
+      margin-left: 0
+
+  .user-image
+
+  .user-main
+    display: block
+    font-size: 15px
+    line-height: 20px
+    margin-left: $user-main-margin-on-expand
+    padding: 10px 15px
+    @include at-breakpoint($tablet)
+      margin-left: $user-width-tablet
+
+  .user-community
+    i
+      color: #666
+      margin-right: 8px
+
+// INFINITE SCROLLING
+#loading-users
+  clear: both
+  color: $blue
+  padding: 40px 0
+  text-align: center
+
+// FILTERS
+.users-right
+  @include at-breakpoint($tablet)
+    @include span-columns(4 omega)
+
+.filters
+  margin-left: 26px
+  ul
+    margin-bottom: 12px
+    li
+      a
+        display: block
+        line-height: 16px
+        // font-size: 16px
+        padding: 6px 0 0
+        i
+          float: right
+          position: relative
+          top: 1px
+
+    li.filters-title
+      border-bottom: 1px solid #EEE
+
+// POSTS
+.posts-main
+  @include at-breakpoint($tablet)
+    @include span-columns(8)
+
+.posts
+
+.post
+  border-bottom: 1px solid #e1e8ed
+  line-height: 20px
+  padding: 13px 0
+
+// FORMS
+.form-holder
+  border: 1px solid #CCC
+  border-radius: 4px
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1)
+  h2
+    border-bottom: 1px solid #DDD
+    padding: 10px 0
+    text-align: center
+
+.form-actions
+  padding: 12px
+
+#new_user
+  margin: 50px auto 0
+  width: 300px
+
+#user_email
+  border-bottom: 1px solid #DDD
+
+// SIMPLE FORM
+.simple_form
+  div.input
+    // margin-bottom: 12px
+    // border-bottom: 1px solid #DDD
+
+  label
+    color: #666
+    display: block
+    font-weight: bold
+    margin-bottom: 3px
+
+  input[type="text"], input[type="email"], input[type="password"], textarea
+    @include border-box-sizing
+    border: 0
+    border-bottom: 1px solid #DDD
+    border-radius: 0
+    // box-shadow: inset 0 1px 2px rgba(0,0,0,0.1)
+    display: block
+    font-size: 12px
+    padding: 12px 12px 12px
+    resize: none
+    width: 100%
+    -webkit-appearance: none
+    &:focus
+      outline: none
+
+  button
+    background: $blue
+    border: 0
+    border-radius: 2px
+    color: #FFF
+    font-weight: bold
+    padding: 9px 25px 10px
+    @include button-shadow($blue)
+    width: 100%
+    &:hover
+      cursor: pointer
+
+  .field_with_errors
+    input
+      border: 1px solid red
+
+  .error
+    color: red
+    @include font-size(14)
+    font-weight: bold

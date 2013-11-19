@@ -1,0 +1,6 @@
+var $user = $('#<%= @user.id %>')
+var $profile = $user.find(".user-main")
+$user.toggleClass('is-expanded');
+if ($profile.html().length === 0) {
+  $profile.html("<%= j render partial: 'profile', locals: { user: @user } %>");
+}

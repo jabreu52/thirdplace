@@ -1,0 +1,11 @@
+.tabs
+  ul.container
+    li
+      = link_to root_path do
+        i.fa.fa-bars
+    li.active
+      = link_to community_users_path(@community) do
+        i.fa.fa-user
+    / li
+    /   = link_to root_path do
+    /     i.fa.fa-circle-o

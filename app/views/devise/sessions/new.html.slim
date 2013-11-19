@@ -1,0 +1,8 @@
+.container
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .form-holder
+      = f.input :email, label: false, placeholder: "Email", required: false, autofocus: true
+      = f.input :password, label: false, placeholder: "Password", required: false
+      .form-actions
+        = f.button :button, "Login"
+    = render "devise/shared/links"

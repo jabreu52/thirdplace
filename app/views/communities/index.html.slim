@@ -1,0 +1,5 @@
+.container
+  - @communities.each do |community|
+    = link_to community_users_path(community) do
+      .community
+        = community.name

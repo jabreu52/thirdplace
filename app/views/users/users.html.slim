@@ -1,0 +1,23 @@
+- content_for :javascript do
+  = javascript_include_tag 'packery.min', 'imagesloaded.min', 'infinite_scroll.min', 'users'
+
+= render 'users/tabs'
+
+.container
+  .users-main
+    .users
+      = render @users
+    #loading-users
+    = paginate @users, remote: true
+  .users-right
+    .filters
+      - @subclass_names.each do |name|
+        - if instance_variable_defined?("@#{name}_filters")
+          ul
+            li.filters-title= name.capitalize
+            - instance_variable_get("@#{name}_filters").each do |community|
+              li
+                = link_to url_for(params.merge(f: params[:f] ? params[:f].include?(community.id.to_s) ? params[:f] - [community.id.to_s] : params[:f] + [community.id.to_s] : [community.id.to_s])) do
+                  - if params[:f].try(:include?, community.id.to_s)
+                    i.fa.fa-times-circle
+                  = community.name

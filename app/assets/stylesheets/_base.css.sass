@@ -1,0 +1,94 @@
+// FUNCTIONS
+@function rem($px)
+  @return $px * 0.0625rem
+
+@function px($px)
+  @return $px * 1px
+
+@function em($px)
+  @return $px * 0.063em
+
+// GRID
+$total-columns: 5
+$column-width: 60px //4rem
+$gutter-width: 0px  //0rem
+$grid-padding: 10px //rem(12)
+
+$tablet: 12
+//$desktop: 16
+
+// // LINE HEIGHT [http://www.pearsonified.com/typography/]
+// $line-height-mobile: 23 // [320px]
+// $line-height-tablet: 27 // [768px]
+// $line-height-desktop: 28 // [1024px]
+
+// GOLDEN RATIO
+$golden-ratio: 1.61803398875
+$magic-number: 16 * $golden-ratio
+
+// MIXINS
+@mixin font-size($size)
+  $line-size: $size * $golden-ratio
+  font-size: px($size)
+  //font-size: rem($size)
+  line-height: px($line-size)
+  //line-height: rem($line-size)
+
+@mixin ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+@mixin button-shadow($color)
+  box-shadow: 0 1px 0 darken($color, 25%)
+
+@mixin linear-gradient($r,$g,$b,$a,$r1,$g1,$b1,$a1)
+  background: rgb($r,$g,$b)
+  background: -moz-linear-gradient(-45deg, rgba($r,$g,$b,$a) 0%, rgba($r1,$g1,$b1,$a1) 100%)
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba($r,$g,$b,$a)), color-stop(100%,rgba($r1,$g1,$b1,$a1)))
+  background: -webkit-linear-gradient(-55deg, rgba($r,$g,$b,$a) 0%,rgba($r1,$g1,$b1,$a1) 100%)
+  background: -o-linear-gradient(-45deg, rgba($r,$g,$b,$a) 0%,rgba($r1,$g1,$b1,$a1) 100%)
+  background: -ms-linear-gradient(-45deg, rgba($r,$g,$b,$a) 0%,rgba($r1,$g1,$b1,$a1) 100%)
+  background: linear-gradient(135deg, rgba($r,$g,$b,$a) 0%,rgba($r1,$g1,$b1,$a1) 100%)
+
+
+// PALETTE
+$black: #333 //#292f33
+$blue: #49638C // #0066cc // #0078BE //#079784 //#339988 // #1D8FC4 // #01A595 // #008BA5 // // #2A8FBD //#007CCC
+
+// BASE
+html
+  font-size: 100%
+
+body
+  color: $black
+  font-family: "proxima-nova", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif
+  @include font-size(16)
+  -webkit-font-smoothing: antialiased
+
+h1
+  @include font-size(32)
+  font-weight: bold
+
+h2
+  @include font-size(24)
+  font-weight: bold
+
+strong
+  font-weight: bold
+
+a, a:visited
+  color: $blue
+  text-decoration: none
+
+img
+  vertical-align: middle
+
+ul
+  list-style: none
+
+// GLOBAL
+.group:after
+  clear: both
+  content: ""
+  display: table
