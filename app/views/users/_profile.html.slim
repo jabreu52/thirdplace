@@ -1,2 +1,5 @@
 .user-communities
   = user.communities.map { |community| "<div class='user-community'><i class='fa fa-caret-right'></i>" + community.name + "</div>"}.join(" ").html_safe
+.user-actions
+  = link_to root_path do
+    | Introduce Yourself to #{user.name.split(" ")[0]}

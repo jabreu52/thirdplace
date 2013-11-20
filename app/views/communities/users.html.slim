@@ -17,7 +17,7 @@
           ul
             li.filters-title= name.capitalize
             - instance_variable_get("@#{name}_filters").each do |community|
-              li
+              li class=("active-filter" if params[:f].try(:include?, community.id.to_s))
                 = link_to url_for(params.merge(f: params[:f] ? params[:f].include?(community.id.to_s) ? params[:f] - [community.id.to_s] : params[:f] + [community.id.to_s] : [community.id.to_s])) do
                   - if params[:f].try(:include?, community.id.to_s)
                     i.fa.fa-times-circle

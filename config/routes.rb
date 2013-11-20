@@ -2,11 +2,13 @@ Thirdplace::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'communities#index'
+  get 'redirect' => 'application#redirect'
+  get 'users/:id/people' => 'users#users', as: :user_users
+  get 'communities/:id/people' => 'communities#users', as: :community_users
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :show]
   resources :communities, only: [:index, :show]
-  get 'users/:id/people' => 'users#users', as: :user_users
-  get 'communities/:id/people' => 'communities#users', as: :community_users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
